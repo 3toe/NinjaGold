@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Ninja Gold</title>
+   {% load static %}
+   <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+   <div id="container">
+      <div id="status">
+         <p>Your gold:</p>
+         <p id="gold">{{request.session.money}}</p>
+         <form method="POST">
+            {% csrf_token %}
+            <input type="Submit" value="Start / Reset" name="reset" id="reset">
+         </form>
+      </div>
+      
+      <form action="/process_money" method="POST">
+         {% csrf_token %}
+         <div class="place">
+            <h4>Farm</h4>
+            <p>Earn 10 to 20 gold.</p>
+            <input type="Submit" value="grow some gold" name="farm">
+         </div>
+         <div class="place">
+            <h4>Cave</h4>
+            <p>Earn 5 to 30 gold.</p>
+            <input type="Submit" value="golddiggin" name="cave">
+         </div>         
+         <div class="place">
+            <h4>House</h4>
+            <p>Earn up to 100 gold or get busted.</p>
+            <input type="Submit" value="steal from house" name="house">
+         </div>         
+         <div class="place">  
+            <h4>Casino</h4>
+            <p>Earn or lose up to 50 gold.</p>
+            <input type="Submit" value="Spin the wheel" name="casino">
+         </div>
+      </form>
+
+      <div id="Activities">
+         <p>Activities:</p>
+         <textarea name="comments" rows="6" cols="70" placeholder=" (nothing yet)">{{request.session.log}}</textarea>
+      </div>
+
+   </div>
+</body>
+</html>

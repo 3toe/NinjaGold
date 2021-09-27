@@ -1,0 +1,1 @@
+A bootcamp assignment practicing more Django session and redirects, including some logic and forms
